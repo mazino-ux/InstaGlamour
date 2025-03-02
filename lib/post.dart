@@ -6,62 +6,146 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //name
-        Row(
-          children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundColor: const Color.fromARGB(255, 85, 32, 8),
-              child: Text(
-                '',
-                style: TextStyle(fontSize: 12, fontFamily: "monospace"),
+        // Header with user info and more options
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: const Color.fromARGB(255, 85, 32, 8),
+                child: Text(
+                  'J',
+                  style: TextStyle(fontSize: 12, fontFamily: "monospace", color: Colors.white),
                 ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
+              ),
+              const SizedBox(width: 8),
+              const Text(
                 "Jesus",
                 style: TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.black
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
-            ),
-            Icon(
-              Icons.verified_sharp,
-              color: Color.fromARGB(255, 0, 149,246),
-              size: 16,
+              const SizedBox(width: 4),
+              const Icon(
+                Icons.verified,
+                color: Color.fromARGB(255, 0, 149, 246),
+                size: 16,
               ),
-
-              Spacer(),
-              Icon(Icons.more_horiz)
-          ],
+              const Spacer(),
+              IconButton(
+                icon: const Icon(Icons.more_horiz),
+                onPressed: () {
+                  // Handle more options
+                },
+              ),
+            ],
+          ),
         ),
 
+        // Post Image
+        Image.asset(
+          "assets/images/profile.png",
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 300,
+        ),
 
-        const SizedBox(height: 10),
-        //picture
-        Image.asset("assets/images/profile.png"),
+        // Action buttons (Like, Comment, Share, Save)
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.favorite_border),
+                onPressed: () {
+                  // Handle like action
+                },
+              ),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: const Icon(Icons.mode_comment_outlined),
+                onPressed: () {
+                  // Handle comment action
+                },
+              ),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: const Icon(Icons.send),
+                onPressed: () {
+                  // Handle share action
+                },
+              ),
+              const Spacer(),
+              IconButton(
+                icon: const Icon(Icons.bookmark_border),
+                onPressed: () {
+                  // Handle save action
+                },
+              ),
+            ],
+          ),
+        ),
 
-        //stats(likes, comments, shares)
-        const Row(children: [
-          Icon(Icons.favorite_border_outlined),
-          Text("1.5M"),
-          SizedBox(width: 16),
+        // Likes count
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            "1.5M likes",
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
 
-          Icon(Icons.message_rounded),
-          Text("18.5K"),
-          SizedBox(width: 16),
+        // Caption
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+          child: RichText(
+            text: const TextSpan(
+              style: TextStyle(color: Colors.black),
+              children: [
+                TextSpan(
+                  text: "Jesus ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: "This is a sample caption for the post. #Flutter #InstagramUI",
+                ),
+              ],
+            ),
+          ),
+        ),
 
-          Icon(Icons.share_outlined),
-          Text("1.5K"),
-        ],)
+        // Comments section
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            "View all 18.5K comments",
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[600],
+            ),
+          ),
+        ),
 
-
-        //Caption
+        // Time posted
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+          child: Text(
+            "2 hours ago",
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[600],
+            ),
+          ),
+        ),
       ],
     );
   }
