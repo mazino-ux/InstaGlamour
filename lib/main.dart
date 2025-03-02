@@ -18,11 +18,11 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Instagram Clone',
       routes: {
-        "/home": (context) => Home(),
+        "/": (context) => Home(),
         "/explore": (context) => Explore(),
-        "/addPost": (context) => const AddPost(),
-        "/reels": (context) => const Reels(),
-        "/profile": (context) => const Profile(),
+        "/addPost": (context) =>  AddPost(),
+        "/reels": (context) =>  Reels(),
+        "/profile": (context) =>  Profile(),
       },
       // home: Scaffold(
       //   body: Center(
