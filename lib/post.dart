@@ -48,6 +48,8 @@ class Post extends StatelessWidget {
           ),
         ),
 
+
+
         // Post Image
         Image.asset(
           "assets/images/profile.png",
@@ -55,6 +57,15 @@ class Post extends StatelessWidget {
           width: double.infinity,
           height: 300,
         ),
+
+        // GestureDetector(
+        //   onDoubleTap: (){
+        //     setState((){
+        //       numOfLikes++;
+        //       isLiked = true;
+        //     })
+        //   },
+        // )
 
         // Action buttons (Like, Comment, Share, Save)
         Padding(
