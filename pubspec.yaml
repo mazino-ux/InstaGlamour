@@ -16,7 +16,14 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+  # uses-material-design: true
   uses-material-design: true
 
   assets:
     - assets/images/
+    - assets/icons/
+    - assets/icons/home.png
+    - assets/icons/search.png
+    - assets/icons/add.png
+    - assets/icons/reel.png
+    - assets/icons/user.png

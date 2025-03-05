@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/bottom.dart';
 import 'package:instagram_clone/navbar.dart';
 import 'package:instagram_clone/post.dart';
 import 'package:instagram_clone/story.dart';
@@ -42,6 +43,11 @@ class Home extends StatelessWidget {
           //Posts
 
           Post(),
+          Post(),
+          Post(),
+          Post(),
+
+          Bottombar(),
 
         ],
       ),
