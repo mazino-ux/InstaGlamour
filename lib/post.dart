@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Post extends StatelessWidget {
+class Post extends StatefulWidget {
   final int? item;
   const Post({super.key, this.item});
+
+  @override
+  State<Post> createState() => _PostState();
+}
+
+class _PostState extends State<Post> {
+  int numOfLikes = 0;
+  bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -48,24 +56,21 @@ class Post extends StatelessWidget {
           ),
         ),
 
-
-
-        // Post Image
-        Image.asset(
-          "assets/images/profile.png",
-          fit: BoxFit.cover,
-          width: double.infinity,
-          height: 300,
+        // Post Image with GestureDetector
+        GestureDetector(
+          onDoubleTap: () {
+            setState(() {
+              isLiked = true;
+              numOfLikes++;
+            });
+          },
+          child: Image.asset(
+            "assets/images/profile.png",
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: 300,
+          ),
         ),
-
-        // GestureDetector(
-        //   onDoubleTap: (){
-        //     setState((){
-        //       numOfLikes++;
-        //       isLiked = true;
-        //     })
-        //   },
-        // )
 
         // Action buttons (Like, Comment, Share, Save)
         Padding(
@@ -73,9 +78,12 @@ class Post extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.favorite_border),
+                icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border, color: isLiked ? Colors.red : null),
                 onPressed: () {
-                  // Handle like action
+                  setState(() {
+                    isLiked = !isLiked;
+                    numOfLikes = isLiked ? numOfLikes + 1 : numOfLikes - 1;
+                  });
                 },
               ),
               const SizedBox(width: 8),
@@ -104,10 +112,10 @@ class Post extends StatelessWidget {
         ),
 
         // Likes count
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            "1.5M likes",
+            "$numOfLikes likes",
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
