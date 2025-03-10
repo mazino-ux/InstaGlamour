@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/bottom.dart';
 import 'package:instagram_clone/navbar.dart';
+// ignore: unused_import
 import 'package:instagram_clone/post.dart';
 import 'package:instagram_clone/story.dart';
-// import 'package:instagram_clone/post.dart';
+
 class Home extends StatelessWidget {
   Home({super.key});
 
@@ -11,9 +11,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(    
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 1.0),
         children: [
           // Instagram Header
           Navbar(),
@@ -41,14 +41,13 @@ class Home extends StatelessWidget {
           ),
 
           //Posts
-
-          Post(),
-          Post(),
-          Post(),
-          Post(),
-
-          Bottombar(),
-
+        ListView.builder(
+          shrinkWrap: true, // ✅ Allows it to take the needed space
+          physics: NeverScrollableScrollPhysics(), // ✅ Prevents conflict with parent ListView
+          itemCount: 20,
+          itemBuilder: (context, index) => Post(),
+        ),
+      
         ],
       ),
     );
